@@ -6,6 +6,10 @@ class Motor:
     def __init__(self, velocidade=0):
         self.__velocidade = velocidade
 
+    @property
+    def velocidade(self):
+        return self.__velocidade
+
     def acelerar(self):
         self.__velocidade += 1
         print(f'Velocidade: {self.__velocidade}')
@@ -60,26 +64,28 @@ class Carro:
     def mostar_direcao(self):
         self.direcao.mostrar_direcao()
 
-def iniciar_carro():
-    motor = Motor()
-    direcao = Direcao()
-    carro = Carro(motor, direcao)
+if __name__ == '__main__':
+    def iniciar_carro():
+        motor = Motor()
+        direcao = Direcao()
+        carro = Carro(motor, direcao)
 
-    while True:
-        op = str(input('5- Acelerar | 6- Frear | A- Esquerda | D- Direita | 0- Desligar e sair: '))
-        if op == '5':
-            carro.acelerar()
-        elif op == '6':
-            carro.frear()
-        elif op in 'Aa':
-            carro.mover_a_esquerda()
-            carro.mostar_direcao()
-        elif op in 'Dd':
-            carro.mover_a_direita()
-            carro.mostar_direcao()
-        elif op == '0':
-            break
-        else:
-            print('Escolha uma opção válida.')
+        while True:
+            op = str(input('5- Acelerar | 6- Frear | A- Esquerda | D- Direita | 0- Desligar e sair: '))
+            if op == '5':
+                carro.acelerar()
+            elif op == '6':
+                carro.frear()
+            elif op in 'Aa':
+                carro.mover_a_esquerda()
+                carro.mostar_direcao()
+            elif op in 'Dd':
+                carro.mover_a_direita()
+                carro.mostar_direcao()
+            elif op == '0':
+                break
+            else:
+                print('Escolha uma opção válida.')
 
-iniciar_carro()
+
+    iniciar_carro()
